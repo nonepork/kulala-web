@@ -1,20 +1,12 @@
 <script>
-	import '$lib/index/fonts.css';
 	import '@fortawesome/fontawesome-free/css/all.min.css';
-	import './page.css';
+	import '$lib/global-landing-page.css';
+	import Footer from '$lib/Footer.svelte';
 </script>
 
-<div class="app">
+<div class="landing-page">
 	<main>
 		<slot />
 	</main>
+	<Footer/>
 </div>
-
-<style>
-	.app {
-		display: block;
-		flex-direction: column;
-		height: auto;
-		min-height: 100vh;
-	}
-</style>

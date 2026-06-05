@@ -1,7 +1,9 @@
 import { defineConfig } from 'vite-plus';
 import { sveltekit } from '@sveltejs/kit/vite';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
+	logLevel: process.env.NODE_ENV === 'production' ? 'silent' : 'info',
 	staged: {
 		'*': 'vp check --fix'
 	},
@@ -191,7 +193,7 @@ export default defineConfig({
 		sortPackageJson: false,
 		ignorePatterns: ['pnpm-lock.yaml', 'package-lock.json', 'yarn.lock']
 	},
-	plugins: [sveltekit()],
+	plugins: [tailwindcss(), sveltekit()],
 
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}']

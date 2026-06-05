@@ -1,0 +1,53 @@
+@layer theme, base, components, utilities;
+
+@import 'tailwindcss/theme.css' layer(theme);
+@plugin "@tailwindcss/typography";
+
+@plugin 'daisyui' {
+	themes: dark --default;
+}
+
+.non-landing-page {
+	font-family: var(--font-sans);
+	@import 'tailwindcss/preflight.css' layer(base);
+	@import 'tailwindcss/utilities.css' layer(utilities);
+
+	h1 a:hover > span.fa.fa-arrow-left,
+	h2 a:hover > span.fa.fa-link,
+	h3 a:hover > span.fa.fa-link,
+	h4 a:hover > span.fa.fa-link,
+	h5 a:hover > span.fa.fa-link,
+	h6 a:hover > span.fa.fa-link {
+		color: var(--color-primary);
+		border-bottom: none;
+	}
+
+	a span.fa.fa-arrow-left,
+	a span.fa.fa-link {
+		color: var(--color-primary);
+		border-bottom: none;
+	}
+
+	a span.fa.fa-link {
+		margin-left: 0.5rem;
+	}
+
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		color: var(--color-secondary);
+	}
+
+	a {
+		color: var(--color-primary);
+		text-decoration: none;
+		border-bottom: 1px dashed var(--color-primary);
+	}
+
+	a:hover {
+		color: var(--color-primary);
+		border-bottom-color: var(--color-primary);
+	}
+}

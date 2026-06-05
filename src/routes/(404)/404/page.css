@@ -1,0 +1,16 @@
+h1 {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-xxl);
+	color: var(--color-title);
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	margin: 1rem auto;
+}
+
+.container {
+	font-family: var(--font-sans);
+	text-align: center;
+}

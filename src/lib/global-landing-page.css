@@ -1,0 +1,13 @@
+@layer theme, base, components, utilities;
+
+@import 'tailwindcss/theme.css' layer(theme);
+
+@plugin 'daisyui' {
+	themes: dark --default;
+}
+
+.landing-page {
+	font-family: var(--font-sans);
+	@import 'tailwindcss/preflight.css' layer(base);
+	@import 'tailwindcss/utilities.css' layer(utilities);
+}

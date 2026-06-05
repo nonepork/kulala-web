@@ -1,0 +1,130 @@
+:root {
+	--font-sans: 'Manrope', sans-serif;
+	--font-mono: 'JetBrains Mono', monospace;
+	--page-bg-color: #111111;
+	--page-color: #e3e8e1;
+	--layout-bg-color: #161616;
+	--page-accent-color: #ee5396;
+	--font-size-xs: 0.8rem;
+	--font-size-s: 0.9rem;
+	--font-size-m: 1rem;
+	--font-size-l: 1.2rem;
+	--font-size-xl: 1.5rem;
+	--font-size-xxl: 2rem;
+	--font-size-3xl: 3rem;
+	--link-back-color: #525252;
+	--link-back-hover-color: #ee5396;
+	--link-color: #ee5396;
+	--link-hover-color: #525252;
+	--link-visited-color: #ee5396;
+	--color-title: #e3e8e1;
+	--color-sub-title: #ee5396;
+	--color-list-title: #e3e8e1;
+	--color-list-border: #525252;
+	--color-list-description: #525252;
+	--color-poisonous-green: #69c379;
+	--color-banana-yellow: #d4a347;
+	--color-neovim-blue: #577fd5;
+	--color-orange: #fa8563;
+	--color-elephant-blue: #9794d0;
+	--color-purple: #9794d0;
+	--color-grey: #525252;
+	--color-turquoise-blue: #56b6c2;
+	--color-blue: #577fd5;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	color: var(--page-color);
+	accent-color: var(--page-accent-color);
+	background-color: var(--page-bg-color);
+}
+
+.layout-container {
+	display: block;
+}
+
+.layout-centered {
+	margin: 0 auto;
+	max-width: 776px;
+}
+
+.layout {
+	margin: 1rem 1rem;
+	background-color: var(--layout-bg-color);
+	padding: 1rem;
+	border-radius: 0.5rem;
+}
+
+h2.list-title {
+	color: var(--color-list-title);
+	margin-top: 0;
+	margin-bottom: 0.5rem;
+}
+
+li.list-item {
+	padding-inline-start: 0;
+	border-bottom: 1px solid var(--color-list-border);
+	margin-bottom: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+
+h1 > a,
+h2 > a,
+h3 > a,
+h4 > a,
+h5 > a,
+h6 > a {
+	text-decoration: none;
+	border-bottom: none;
+	margin-left: 0.5rem;
+	color: var(--color-grey);
+}
+
+h1 a > span.fa.fa-arrow-left,
+h1 a > span.fa.fa-link,
+h2 a > span.fa.fa-link,
+h3 a > span.fa.fa-link,
+h4 a > span.fa.fa-link,
+h5 a > span.fa.fa-link,
+h6 a > span.fa.fa-link {
+	color: var(--link-back-color);
+	border-bottom: none;
+}
+
+h1 a > span.fa.fa-arrow-left:hover,
+h1 a > span.fa.fa-link:hover,
+h2 a > span.fa.fa-link:hover,
+h3 a > span.fa.fa-link:hover,
+h4 a > span.fa.fa-link:hover,
+h5 a > span.fa.fa-link:hover,
+h6 a > span.fa.fa-link {
+	color: var(--link-back-hover-color);
+	border-bottom: none;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var(--color-sub-title);
+}
+
+a {
+	color: var(--link-color);
+	text-decoration: none;
+	border-bottom: 1px dashed var(--link-color);
+}
+
+a:hover {
+	color: var(--link-hover-color);
+	border-bottom-color: var(--link-hover-color);
+}
+
+footer {
+	margin: 1rem 1rem;
+	text-align: right;
+}

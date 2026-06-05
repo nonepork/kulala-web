@@ -1,176 +1,119 @@
-<script>
-	import './modal.css';
-	import './font-settings.css';
-	import './grid.css';
+<script lang="ts">
 	import HeadComponent from '$lib/HeadComponent.svelte';
-
-	// const DOWNLOAD_BASE = 'https://github.com/mistweaverco/kulala/releases/latest/download/';
-
-	/**
-	 * @type {boolean}
-	 */
-	let modalLinuxDownloadIsActive = false;
-
-	const toggleModalLinuxDownload = () => {
-		modalLinuxDownloadIsActive = !modalLinuxDownloadIsActive;
-	};
+	import { smoothScrollToAnchor } from '$lib/utils';
+	let kulalaFeaturesToggle: boolean = false;
 </script>
 
 <HeadComponent
 	data={{
 		title: 'Kulala',
 		description:
-			'Kulala is a a minimal REST-Client Interface and set of tools for working with RESTful APIs. It also supports GraphQL.'
+			'A fully-featured set of tools 🐼 for working with HTTP, GraphQL, gRPC and Websocket connections.'
 	}}
 />
 
-<div class="modal {modalLinuxDownloadIsActive ? 'is-active' : ''}">
-	<div class="modal-background"></div>
-	<div class="modal-content">
-		<button on:click={toggleModalLinuxDownload} class="modal-close is-large" aria-label="close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-		<div class="box">
-			<button class="button is-debian">
-				<!-- <a href="{DOWNLOAD_BASE}Kulala_amd64.deb"> -->
-				<a href="https://github.com/mistweaverco/kulala">
-					<span class="icon">
-						<i class="fa-brands fa-debian"></i>
-					</span>
-					<span>.deb</span>
-				</a>
-			</button>
-			<button class="button is-snap">
-				<!-- <a href="{DOWNLOAD_BASE}Kulala_amd64.snap"> -->
-				<a href="https://github.com/mistweaverco/kulala">
-					<span class="icon">
-						<i class="fa-brands fa-linux"></i>
-					</span>
-					<span>.snap</span>
-				</a>
-			</button>
-			<button class="button is-appimage">
-				<!-- <a href="{DOWNLOAD_BASE}Kulala_x86_64.AppImage"> -->
-				<a href="https://github.com/mistweaverco/kulala">
-					<span class="icon">
-						<i class="fa-solid fa-gear"></i>
-					</span>
-					<span>.AppImage</span>
-				</a>
-			</button>
-			<button class="button is-flatpak">
-				<!-- <a href="{DOWNLOAD_BASE}Kulala_x86_64.flatpak"> -->
-				<a href="https://github.com/mistweaverco/kulala">
-					<span class="icon">
-						<i class="fa-solid fa-cube"></i>
-					</span>
-					<span>.flatpak</span>
-				</a>
-			</button>
-		</div>
-	</div>
-</div>
-
-<div class="container is-intro">
-	<div class="inner">
-		<img class="logo" src="/logo.svg" alt="Kulala logo" />
-		<header>Kulala</header>
-		<a href="https://neovim.getkulala.net">
-			<img class="badge" src="/badge-neovim.svg" alt="neovim" />
-		</a>
-		<a href="https://getkulala.net/discord">
-			<img class="badge" src="/badge-discord.svg" alt="Join our Discord" />
-		</a>
-		<a href="https://www.lua.org/">
-			<img class="badge" src="/badge-made-with-lua.svg" alt="Made with lua" />
-		</a>
-		<a href="https://www.typescriptlang.org/">
-			<img class="badge" src="/badge-typescript.svg" alt="Made with TypeScript" />
-		</a>
-		<a href="https://www.electronjs.org/">
-			<img class="badge" src="/badge-electron.svg" alt="Made with Electron" />
-		</a>
-		<a href="https://vite.dev/">
-			<img class="badge" src="/badge-vite.svg" alt="Powered by Vite" />
-		</a>
-		<a href="https://github.com/mistweaverco/kulala.nvim/graphs/contributors">
-			<img class="badge" src="/badge-made-with-love.svg" alt="Made with love by the community" />
-		</a>
-
-		<hr />
-
-		<div class="download-buttons">
-			<!-- <a href="https://github.com/mistweaverco/kulala/releases/latest/download/Kulala-setup_x64.exe"> -->
-			<button class="button is-windows">
-				<a
-					href="https://github.com/mistweaverco/kulala"
+<div id="start" class="hero bg-base-300 min-h-screen">
+	<div class="hero-content text-center">
+		<div class="max-w-md">
+			<img src="/logo.svg" alt="Kulala logo" class="m-5 mx-auto w-64" />
+			<h1 class="text-5xl font-bold">Kulala</h1>
+			<div class="collapse bg-base-100 border border-base-300 mt-6 mb-6 border-rounded rounded-lg">
+				<input type="checkbox" checked={kulalaFeaturesToggle} name="intro-kulala-features" onchange={() => (kulalaFeaturesToggle = !kulalaFeaturesToggle)} />
+				<div
+					class="collapse-title font-semibold text-lg bg-info text-info-content text-center"
+					style="padding-inline-end: unset;"
 				>
-					<span class="icon"><i class="fa-brands fa-windows"></i></span> <span>Windows</span></a
-				>
-			</button>
-			<!-- <a href="https://github.com/mistweaverco/kulala/releases/latest/download/Kulala_universal.dmg"> -->
-			<button class="button is-mac"
-				><a
-					href="https://github.com/mistweaverco/kulala"
-					><span class="icon"><i class="fa-brands fa-apple"></i></span> <span>Mac</span></a
-				></button
+					A fully-featured set of tools 🐼 for working with HTTP, GraphQL, gRPC and Websocket connections.
+					<div class="text-center">
+						<i class="fa-solid {kulalaFeaturesToggle ? 'fa-caret-up' : 'fa-caret-down'}"></i>
+					</div>
+				</div>
+				<div class="collapse-content text-center border border-info rounded-b-lg">
+					<p class="mt-6 mb-2 text-2xl text-info">Features ✨</p>
+					<p class="text-info text-l mt-6 mb-6">
+						Kulala supports Neovim, Code, Zed and is also available as a standalone desktop app.
+						Our integrations support the Jetbrains .http spec (with full scripting support).
+					</p>
+				</div>
+			</div>
+			<a href="#apps" onclick={smoothScrollToAnchor}
+				><button class="btn btn-primary">Apps</button></a
 			>
-			<button on:click={toggleModalLinuxDownload} class="button is-linux">
-				<span class="icon">
-					<i class="fa-brands fa-linux"></i>
-				</span>
-				<span>Linux</span>
-			</button>
 		</div>
-		<p>
-			Kulala is a <strong>minimal REST-Client Interface</strong> and set of tools for working with
-			<strong>RESTful APIs</strong>. It also supports <strong>GraphQL</strong>.
-		</p>
 	</div>
 </div>
 
-<hr />
+<a id="apps" aria-label="Apps section anchor"></a>
+<div class="hero bg-base-200 min-h-screen">
+	<div class="hero-content text-center grid">
+		<div class="bg-base-300 border border-base-300 mt-6 mb-6 border-rounded rounded-lg max-w-3xl min-w-3xl p-10">
+			<h1 class="text-5xl font-bold">Apps 📦</h1>
+			<p class="py-6">Kulala apps (in no particular order):</p>
+			<ul>
+				<li>
+					<div class="tooltip" data-tip="Neovim plugin">
+						<a class="link link-primary" href="/apps/kulala.nvim">Kulala.nvim</a>
+					</div>
+				</li>
+				<li>
+					<div class="tooltip" data-tip="Code extension">
+						<a class="link link-primary" href="/apps/kulala.vscode">Kulala.vscode</a>
+					</div>
+				</li>
+				<li>
+					<div class="tooltip" data-tip="Standalone desktop app">
+					<a class="link link-primary" href="/apps/kulala-desktop">Kulala Desktop</a>
+					</div>
+				</li>
+				<li>
+					<div class="tooltip" data-tip="CLI for formatting .http files, importing from/exporting to Postman collections and .bru files, and more!">
+						<a class="link link-primary" href="/apps/kulala-fmt">Kulala fmt</a>
+					</div>
+				</li>
+				<li>
+					<div class="tooltip" data-tip="The library powering all Kulala apps">
+					<a class="link link-primary" href="/apps/kulala-core">Kulala Core</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<a href="#usage" onclick={smoothScrollToAnchor}
+			><button class="btn btn-primary">Usage</button></a
+		>
+		<div>
+		</div>
+	</div>
+</div>
 
-<div class="container is-more">
-	<div class="inner">
-		<h2>Availibility</h2>
-		<p>
-			<strong>Kulala</strong> for Desktop is currently in active development 🚀 and not yet available
-			as an official public release.
-		</p>
-		<p>
-			While we are working hard to bring it to production, expect frequent changes and improvements.
-		</p>
-		<p>
-			Stay tuned for
-			<a href="https://bsky.app/profile/mistweaverco.com">updates</a> and follow the project on
-			<a href="https://github.com/mistweaverco/kulala">Github</a>.
-		</p>
-		<p>
-			<strong>Kulala.nvim</strong> for Neovim is generally available for
-			<a href="https://github.com/mistweaverco/kulala.nvim/releases/latest">download</a> and
-			<a href="https://neovim.getkulala.net/docs/usage">use</a>.
-		</p>
-		<p>
-			<strong>kulala-ls</strong> is a language server which is available for
-			<a href="https://github.com/mistweaverco/kulala-ls/releases/latest">download</a> and
-			<a href="https://github.com/mistweaverco/kulala-ls?tab=readme-ov-file#configuration">use</a>.
-		</p>
-		<p>
-			<strong>kulala-fmt</strong> is a linter and formatter which is also available for
-			<a href="https://github.com/mistweaverco/kulala-fmt/releases/latest">download</a> and
-			<a href="https://github.com/mistweaverco/kulala-fmt?tab=readme-ov-file#usage">use</a>.
-		</p>
+<a id="usage" aria-label="Usage section anchor"></a>
+<div class="hero bg-base-300 min-h-screen">
+	<div class="hero-content text-center grid">
+		<div class="bg-base-200 border border-base-300 mt-6 mb-6 border-rounded rounded-lg max-w-3xl min-w-3xl p-10">
+			<h1 class="text-5xl font-bold mb-5">Usage 🧑‍💻</h1>
+			<div class="badge badge-outline badge-info">
+				<a href="/usage">Usage overview</a>
+			</div>
+			<div class="badge badge-outline badge-info">
+				<a href="/usage/getting-started">Getting started</a>
+			</div>
+		</div>
+		<a href="#get-involved" onclick={smoothScrollToAnchor}
+			><button class="btn btn-primary">Get involved</button></a
+		>
+		<div>
+		</div>
+	</div>
+</div>
 
-		<hr />
-
-		<a href="https://mistweaverco.com">
-			<img
-				class="mwbadge"
-				src="/mistweaverco-logo.svg"
-				alt="mistweaverco"
-				title="Brought to you by mistweaverco."
-			/>
-		</a>
+<a id="get-involved" aria-label="Get involved section anchor"></a>
+<div class="hero bg-base-300 min-h-screen">
+	<div class="hero-content text-center">
+		<div class="max-w-3xl">
+			<h1 class="text-5xl font-bold">Get involved ❤️</h1>
+			<p class="py-6">All Kulala tools are open-source and we welcome contributions.</p>
+			<p>
+				View the <a class="text-primary" href="https://github.com/search?q=user%3Amistweaverco+kulala&type=repositories&sort=stargazers">code.</a>
+			</p>
+		</div>
 	</div>
 </div>
