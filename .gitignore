@@ -23,5 +23,6 @@ Thumbs.db
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
-# Neovim
-.editor/neovim-session.vim
+# Dynamic fetch on build from remotes
+/static/*schema.json
+/static/http-client.*.json
