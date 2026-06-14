@@ -20,6 +20,7 @@ export default defineConfig({
 		},
 		ignorePatterns: [
 			'build/',
+			'node_modules/',
 			'.svelte-kit/',
 			'dist/',
 			'bun.lock',
@@ -175,7 +176,8 @@ export default defineConfig({
 				files: ['*.svelte', '**/*.svelte'],
 				rules: {
 					'no-inner-declarations': 'off',
-					'no-self-assign': 'off'
+					'no-self-assign': 'off',
+					'no-undef': 'off'
 				},
 				jsPlugins: ['eslint-plugin-svelte']
 			}
@@ -191,7 +193,15 @@ export default defineConfig({
 		trailingComma: 'none',
 		printWidth: 100,
 		sortPackageJson: false,
-		ignorePatterns: ['pnpm-lock.yaml', 'package-lock.json', 'yarn.lock']
+		ignorePatterns: [
+			'pnpm-lock.yaml',
+			'package-lock.json',
+			'yarn.lock',
+			'node_modules/',
+			'build/',
+			'.svelte-kit/',
+			'dist/'
+		]
 	},
 	plugins: [tailwindcss(), sveltekit()],
 
