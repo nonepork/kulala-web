@@ -16,7 +16,7 @@ When a request is named with `### REQUEST_NAME`, later requests can reference it
 {{REQUEST_NAME.(response|request).(body|headers).(JSONPath|header name)}}
 ```
 
-- **Body:** use JSONPath after `body.` - e.g. `$.id`, `$.body.token`
+- **Body:** use JSONPath after `body.` - e.g. `$.id`, `$.json.token`, `$.json.token[0]`
 - **Headers:** `{{REQUEST_NAME.response.headers.Date}}` or `{{REQUEST_NAME.response.headers['Date']}}`
 - **Cookies:** `{{REQUEST_NAME.response.cookies.CookieName.value}}`
 
@@ -45,7 +45,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "token": "{{REQUEST_ONE.response.body.$.body.token}}"
+  "token": "{{REQUEST_ONE.response.body.$.json.token}}"
 }
 
 ###
@@ -92,6 +92,6 @@ X-Custom-Header: Kulala-Insecure
 
 > {%
   const fs = require('fs');
-  fs.writeFileSync('TOKEN.txt', response.body.body.token);
+  fs.writeFileSync('TOKEN.txt', response.body.json.token);
 %}
 ```
